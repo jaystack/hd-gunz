@@ -137,29 +137,33 @@ export default async function initGameServer({ socketIo }) {
       const nextPlayerIndex = playerIndex === state.players.length - 1 ? 0 : playerIndex + 1;
       if (player.alive) socket.emit(`shot`, { username: player.username, shot });
 
-      const isFinish = state.players.every(p => !p.alive || p.didShoot);
-      const winnerIndex = state.players.findIndex(p => p.alive);
-      const sum = state.players.reduce((sum, player) => sum + player.bet, 0);
-
       dispatch(state => ({
         ...state,
-        players: state.players
-          .map((player, index) => {
-            if (index === playerIndex)
-              return {
-                ...player,
-                bullets: shot ? player.bullets - 1 : player.bullets,
-                didShoot: true
-              };
-            if (index === nextPlayerIndex && shot) {
-              return {
-                ...player,
-                alive: false
-              };
-            }
-            return player;
-          })
-          .map((player, index) => {
+        players: state.players.map((player, index) => {
+          if (index === playerIndex)
+            return {
+              ...player,
+              bullets: shot ? player.bullets - 1 : player.bullets,
+              didShoot: true
+            };
+          if (index === nextPlayerIndex && shot) {
+            return {
+              ...player,
+              alive: false
+            };
+          }
+          return player;
+        })
+      }));
+
+      const isFinish = getState().players.every(p => !p.alive || p.didShoot);
+      const winnerIndex = getState().players.findIndex(p => p.alive);
+      const sum = getState().players.reduce((sum, player) => sum + player.bet, 0);
+      console.log('isFinish', isFinish);
+      if (isFinish) {
+        dispatch(state => ({
+          ...state,
+          players: state.players.map((player, index) => {
             if (!isFinish) return player;
             return {
               ...player,
@@ -167,7 +171,9 @@ export default async function initGameServer({ socketIo }) {
               bet: 0
             };
           })
-      }));
+        }));
+        setTimeout(() => dispatch(state => ({ ...state, status: 'bet' })), 5000);
+      }
     });
   });
 }
