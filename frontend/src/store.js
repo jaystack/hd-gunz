@@ -1,6 +1,7 @@
 import Store, { thunk } from 'repatch';
 import io from 'socket.io-client';
 import { playSound } from './utils';
+import { playSound } from './actions';
 
 export const socket = io('http://192.168.3.92:5000');
 socket.on('connect', () => {
@@ -8,6 +9,11 @@ socket.on('connect', () => {
   socket.on('change', gameState => {
     console.log('change', gameState);
     store.dispatch(state => ({ ...state, gameState }));
+  });
+
+  socket.on('shot', ({ username, shot }) => {
+    if (username !== store.getState().me) return;
+    store.dispatch(playSound(shot ? 'shot' : 'shutter'));
   });
 });
 

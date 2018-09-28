@@ -6,7 +6,7 @@ import { shoot, playSound } from '../actions';
 export default connect(state => ({ status: state.gameState.status }), { shoot, playSound })(
   class lightbulb extends Component {
     componentDidMount() {
-      this.props.playSound('lets-start');
+      this.props.playSound('revolver-spinning');
     }
 
     attempShoot = () => {

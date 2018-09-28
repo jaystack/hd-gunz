@@ -125,6 +125,7 @@ export default async function initGameServer({ socketIo }) {
       const player = state.players[playerIndex];
       const shot = player.alive ? Math.random() < player.bullets / 6 : false;
       const nextPlayerIndex = playerIndex === state.players.length - 1 ? 0 : playerIndex + 1;
+      if (player.alive) socket.emit(`shot`, { username: player.username, shot });
 
       dispatch(state => ({
         ...state,
