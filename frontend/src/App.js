@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import Reg from './components/reg';
+import Ready from './components/ready';
 import Bet from './components/bet';
 
 export default connect(state => ({ status: state.gameState.status, me: state.me }))(
@@ -10,7 +11,7 @@ export default connect(state => ({ status: state.gameState.status, me: state.me 
       const { status, me } = this.props;
       return (
         <div className="App">
-          {status === 'waiting' && !me ? <Reg /> : null}
+          {status === 'waiting' && !me ? <Reg /> : <Ready />}
           {status === 'bet' && <Bet />}
         </div>
       );

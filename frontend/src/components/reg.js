@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { register } from '../actions';
 
-export default connect({ register })(
+export default connect(null, { register })(
   class reg extends Component {
     state = {
       username: ''
