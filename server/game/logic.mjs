@@ -1,6 +1,4 @@
 
-
-
 /**
  *  GameState
  *  1. waiting for players (till nuff players)
