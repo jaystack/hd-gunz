@@ -6,6 +6,7 @@ import Ready from './components/ready';
 import Bet from './components/bet';
 import Lightbulb from './components/lightbulb';
 import Dead from './components/dead';
+import Header from './components/header';
 import { playSound } from './actions';
 
 export default connect(
@@ -24,6 +25,7 @@ export default connect(
       let { status, me, alive } = this.props;
       return (
         <div className="App">
+          <Header />
           {status === 'waiting' && (!me ? <Reg /> : <Ready />)}
           {status === 'bet' && <Bet />}
           {status === 'bulb' && <Lightbulb />}

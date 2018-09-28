@@ -22,3 +22,8 @@ export const shoot = () => state => (dispatch, getState, { socket }) => {
 export const playSound = which => state => (dispatch, getState, { playSound }) => {
   playSound(`sounds/${which}.mp3`);
 };
+
+export const reset = () => state => (dispatch, getState, { socket }) => {
+  socket.emit('reset');
+  dispatch(state => ({ ...state, me: '' }));
+};

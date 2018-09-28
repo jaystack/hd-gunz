@@ -44,24 +44,25 @@ export default connect(
     };
 
     render() {
-      const { usernames, bullets, budget, bet, betSubmitted , me} = this.props;
-      console.log(this.props)
+      const { usernames, bullets, budget, bet, betSubmitted, me } = this.props;
       return (
         <div>
           <div className="bulletContainer">
             {Array.from({ length: bullets }).map((e, i) => <img src={bullet} key={i} className="bullet" />)}
           </div>
           <div className="playersContainer">
-            {usernames.map((e, i) => (
-              e.username !== me.username ? 
-              (<div key={i} className="userContainer">
-                <img src={playersAssets[i]}  className="chars" />
-                <div className="userDetials">
-                  <p> {e.username}</p>
-                  <p>Bet : {e.bet}</p>
-                </div>
-              </div>) : null
-            ))}
+            {usernames.map(
+              (e, i) =>
+                (e.username !== me.username
+                  ? <div key={i} className="userContainer">
+                      <img src={playersAssets[i]} className="chars" />
+                      <div className="userDetials">
+                        <p> {e.username}</p>
+                        <p>Bet : {e.bet}</p>
+                      </div>
+                    </div>
+                  : null)
+            )}
           </div>
           <div className="coinContainer">
             <div className="coin gold"><p>{budget}</p></div>
