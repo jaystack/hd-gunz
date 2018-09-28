@@ -1,6 +1,7 @@
 import Store, { thunk } from 'repatch';
 import io from 'socket.io-client';
-import { playSound } from './actions';
+import { playSound } from './utils';
+import { playSound as playSoundAction } from './actions';
 
 export const socket = io('http://192.168.3.92:5000');
 socket.on('connect', () => {
@@ -12,7 +13,7 @@ socket.on('connect', () => {
 
   socket.on('shot', ({ username, shot }) => {
     if (username !== store.getState().me) return;
-    store.dispatch(playSound(shot ? 'shot' : 'shutter'));
+    store.dispatch(playSoundAction(shot ? 'shot' : 'shutter'));
   });
 });
 
