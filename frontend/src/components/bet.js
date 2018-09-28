@@ -68,7 +68,7 @@ export default connect(
             <div className="coin gold"><p>{budget}</p></div>
             <div className="coin silver"><p>{bet}</p></div>
           </div>
-          {!betSubmitted &&
+          {!me.betSubmitted &&
             <div className="buttonContainer">
               <a href="#" className="myButton" onClick={this.attempBet}>Start</a>
             </div>}
