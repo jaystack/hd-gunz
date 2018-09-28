@@ -23,10 +23,13 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
-
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
@@ -38,7 +41,7 @@
 .login-page .form {
   position: relative;
   z-index: 1;
-  background: #FFFFFF;
+  background: #ffffff;
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
@@ -55,26 +58,28 @@
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
-   position: relative;
-   opacity: 1;
-   top: 0px;
+  position: relative;
+  opacity: 1;
+  top: 0px;
 }
 .form button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #4CAF50;
+  background: #4caf50;
   width: 100%;
   border: 0;
   padding: 15px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 14px;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
 }
-.form button:hover,.form button:active,.form button:focus {
-  background: #43A047;
+.form button:hover,
+.form button:active,
+.form button:focus {
+  background: #43a047;
 }
 .form .message {
   margin: 15px 0 0;
@@ -82,7 +87,7 @@
   font-size: 12px;
 }
 .form .message a {
-  color: #4CAF50;
+  color: #4caf50;
   text-decoration: none;
 }
 .form .register-form {
@@ -94,7 +99,8 @@
   max-width: 300px;
   margin: 0 auto;
 }
-.container:before, .container:after {
+.container:before,
+.container:after {
   content: "";
   display: block;
   clear: both;
@@ -119,26 +125,26 @@
   text-decoration: none;
 }
 .container .info span .fa {
-  color: #EF3B3A;
+  color: #ef3b3a;
 }
 body {
   background: #76b852; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-  background: -moz-linear-gradient(right, #76b852, #8DC26F);
-  background: -o-linear-gradient(right, #76b852, #8DC26F);
-  background: linear-gradient(to left, #76b852, #8DC26F);
+  background: -webkit-linear-gradient(right, #76b852, #8dc26f);
+  background: -moz-linear-gradient(right, #76b852, #8dc26f);
+  background: -o-linear-gradient(right, #76b852, #8dc26f);
+  background: linear-gradient(to left, #76b852, #8dc26f);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;      
+  -moz-osx-font-smoothing: grayscale;
 }
 
-body{
+body {
   font-family: "helvetica neue", verdana, helvetica, san-serif;
   color: #fff;
   background: #655643;
-  }
+}
 
-.container{
+.container {
   background: #fff;
   border-radius: 4px;
   width: 340px;
@@ -146,30 +152,30 @@ body{
   padding: 80px 30px 30px 30px;
   position: relative;
   text-align: center;
-  box-shadow:  0px 0px 8px 2px rgba(0, 0, 0, 0.4);
-  }
+  box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.4);
+}
 
-p.copy{
+p.copy {
   width: 390px;
   margin: 0 auto;
   text-align: right;
   font-size: .8em;
-  }
+}
 
-a{ 
+a {
   color: #fff;
   text-decoration: none;
-  }
+}
 
-a:hover{
+a:hover {
   color: #fff;
   text-decoration: underline;
-  }
+}
 
-h1{
+h1 {
   font-weight: 200;
   position: absolute;
-  background: #80BCA3;
+  background: #80bca3;
   border-bottom: 1px solid #447963;
   color: #fff;
   top: 0px;
@@ -178,10 +184,10 @@ h1{
   margin: 0;
   padding: 10px;
   text-align: left;
-  border-radius: 4px 4px 0px 0px; 
-  }
+  border-radius: 4px 4px 0px 0px;
+}
 
-.coin p{
+.coin p {
   font-family: georgia;
   font-style: italic;
   position: absolute;
@@ -189,26 +195,28 @@ h1{
   z-index: 700;
   top: 0px;
   left: 30px;
-  }
+}
 
-.coin.gold p{  color: rgba(242,215,50,1);}
+.coin.gold p {
+  color: rgba(242, 215, 50, 1);
+}
 
-.coin{
+.coin {
   cursor: pointer;
   content: "";
-  width: 102px; 
+  width: 102px;
   display: inline-block;
   position: relative;
   margin: 5px;
   top: 6px;
   border-radius: 70px;
   z-index: 500;
-  box-shadow:  2px 2px 2px 1px rgba(0, 0, 0, .1);
-  }
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
+}
 
-.coin:after{
+.coin:after {
   content: "";
-  width: 100px; 
+  width: 100px;
   height: 100px;
   display: block;
   top: 8px;
@@ -216,111 +224,111 @@ h1{
   position: absolute;
   border-radius: 50px;
   z-index: 600;
-  }
+}
 
-.coin:before{
+.coin:before {
   content: "";
-  width: 120px; 
+  width: 120px;
   height: 120px;
   display: block;
   position: absolute;
   border-radius: 70px;
   z-index: 500;
-  }
-
-.gold{
-background: linear-gradient(45deg,  rgba(242,215,12,1) 0%,rgba(255,255,255,1) 56%,rgba(252,235,0,1) 96%);
 }
 
-.gold:before{
-  background: linear-gradient(45deg,  rgba(242,215,12,1) 0%,rgba(255,255,255,1) 56%,rgba(252,235,0,1) 96%);
-  border: 1px solid rgba(242,215,12,1);
-  }
+.gold {
+  background: linear-gradient(45deg, rgba(242, 215, 12, 1) 0%, rgba(255, 255, 255, 1) 56%, rgba(252, 235, 0, 1) 96%);
+}
 
+.gold:before {
+  background: linear-gradient(45deg, rgba(242, 215, 12, 1) 0%, rgba(255, 255, 255, 1) 56%, rgba(252, 235, 0, 1) 96%);
+  border: 1px solid rgba(242, 215, 12, 1);
+}
 
-.gold:after{
-  background: linear-gradient(45deg,  rgba(242,215,12,1) 0%,rgba(255,255,255,1) 56%,rgba(252,235,0,1) 96%);
-  border-top: 1px solid rgba(255,255,255,0.3);
-  border-left: 1px solid rgba(255,255,255,0.3);
-  border-bottom: 1px solid rgba(242,215,12,0.3);
-  border-right: 1px solid rgba(242,215,12,0.3);
+.gold:after {
+  background: linear-gradient(45deg, rgba(242, 215, 12, 1) 0%, rgba(255, 255, 255, 1) 56%, rgba(252, 235, 0, 1) 96%);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(242, 215, 12, 0.3);
+  border-right: 1px solid rgba(242, 215, 12, 0.3);
   box-shadow: inset 0px 0px 2px 2px rgba(150, 150, 150, .05);
-  }
+}
 
-  .silver{
-    background: linear-gradient(45deg,  rgba(160,160,160,1) 0%,rgba(232,232,232,1) 56%);
-    }
-  
-  .silver:before{
-    background: linear-gradient(45deg,  rgba(181,181,181,1) 0%,rgba(252,252,252,1) 56%,rgba(232,232,232,1) 96%);
-    border: 1px solid rgba(181,181,181,1);
-    }
-  
-  
-  .silver:after{
-    background: linear-gradient(45deg,  rgba(181,181,181,1) 0%,rgba(252,252,252,1) 56%,rgba(232,232,232,1) 96%);
-    border-top: 1px solid rgba(255,255,255,0.3);
-    border-left: 1px solid rgba(255,255,255,0.3);
-    border-bottom: 1px solid rgba(160,160,160,0.3);
-    border-right: 1px solid rgba(160,160,160,0.5);
-    box-shadow: inset 0px 0px 2px 2px rgba(150, 150, 150, .05);
-    }
+.silver {
+  background: linear-gradient(45deg, rgba(160, 160, 160, 1) 0%, rgba(232, 232, 232, 1) 56%);
+}
 
-    .bullet{
-      width: 50px;
-    }
+.silver:before {
+  background: linear-gradient(45deg, rgba(181, 181, 181, 1) 0%, rgba(252, 252, 252, 1) 56%, rgba(232, 232, 232, 1) 96%);
+  border: 1px solid rgba(181, 181, 181, 1);
+}
 
-    .chars{
-      height: 140px;
-    }
+.silver:after {
+  background: linear-gradient(45deg, rgba(181, 181, 181, 1) 0%, rgba(252, 252, 252, 1) 56%, rgba(232, 232, 232, 1) 96%);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(160, 160, 160, 0.3);
+  border-right: 1px solid rgba(160, 160, 160, 0.5);
+  box-shadow: inset 0px 0px 2px 2px rgba(150, 150, 150, .05);
+}
 
-    .buttonContainer{
-      margin-top: 150px;
-    }
+.bullet {
+  width: 50px;
+}
 
-    .shootButton {
-      background-color:#ff0000;
-      -moz-border-radius:42px;
-      -webkit-border-radius:42px;
-      border-radius:42px;
-      border:12px solid #ff0000;
-      display:inline-block;
-      cursor:pointer;
-      color:#ffffff;
-      font-family:Arial;
-      font-size:28px;
-      padding:32px 9px;
-      text-decoration:none;
-      text-shadow:0px 1px 0px #2f6627;
-    }
-    .shootButton:hover {
-      background-color:#ff0000;
-    }
-    .shootButton:active {
-      position:relative;
-      top:1px;
-    }
+.chars {
+  height: 140px;
+}
 
-    .deadContainer{
-      margin: auto;
-      background-repeat: no-repeat;
-      background-position: top center; 
-      background-attachment: fixed;
+.buttonContainer {
+  margin-top: 150px;
+}
 
-      background-image: url("./assets/blood.gif");
-      height: 900px;
-    }
+.shootButton {
+  background-color: #ff0000;
+  -moz-border-radius: 42px;
+  -webkit-border-radius: 42px;
+  border-radius: 42px;
+  border: 12px solid #ff0000;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 28px;
+  padding: 32px 9px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #2f6627;
+}
+.shootButton:hover {
+  background-color: #ff0000;
+}
+.shootButton:active {
+  position: relative;
+  top: 1px;
+}
 
-    .userContainer{
-      display: inline-flex;
-    }
+.deadContainer {
+  margin: auto;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-attachment: fixed;
 
-    .userDetials{
-      display: table-row;
-    }
+  background-image: url("./assets/blood.gif");
+  height: 900px;
+}
 
-    .playersContainer{
-      display: inline-grid;
-    }
-    
-  
+.userContainer {
+  display: inline-flex;
+}
+
+.userDetials {
+  display: table-row;
+}
+
+.playersContainer {
+  display: inline-grid;
+}
+
+.coinContainer {
+  height: 150px;
+}
