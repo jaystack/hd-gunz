@@ -6,12 +6,20 @@ import Ready from './components/ready';
 import Bet from './components/bet';
 import Lightbulb from './components/lightbulb';
 import Dead from './components/dead';
+import { playSound } from './actions';
 
-export default connect(state => {
-  const player = state.gameState.players.find(p => p.username === state.me);
-  return { status: state.gameState.status, me: state.me, alive: player ? player.alive : true };
-})(
+export default connect(
+  state => {
+    const player = state.gameState.players.find(p => p.username === state.me);
+    return { status: state.gameState.status, me: state.me, alive: player ? player.alive : true };
+  },
+  { playSound }
+)(
   class App extends Component {
+    componentDidMount() {
+      this.props.playSound('guns-n-bullets');
+    }
+
     render() {
       let { status, me, alive } = this.props;
       return (

@@ -7,7 +7,7 @@ import char1 from '../assets/char1.png';
 import char2 from '../assets/char2.png';
 import char3 from '../assets/char3.png';
 import char4 from '../assets/char4.png';
-import { bet, betSubmit } from '../actions';
+import { bet, betSubmit, playSound } from '../actions';
 
 const playersAssets = [char1, char2, char3, char4];
 
@@ -22,11 +22,12 @@ export default connect(
       submitted: me ? me.betSubmitted : false
     };
   },
-  { bet, betSubmit }
+  { placeBet: bet, betSubmit, playSound }
 )(
   class bet extends Component {
     takeBet = () => {
-      this.props.bet(5);
+      this.props.playSound('coins');
+      this.props.placeBet(5);
     };
 
     attempBet = () => {

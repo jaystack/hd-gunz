@@ -1,5 +1,6 @@
 import Store, { thunk } from 'repatch';
 import io from 'socket.io-client';
+import { playSound } from './utils';
 
 export const socket = io('http://localhost:5000');
 socket.on('connect', () => {
@@ -14,7 +15,7 @@ socket.on('connect', () => {
 const store = new Store({
   me: '',
   gameState: { players: [], status: 'waiting' }
-}).addMiddleware(thunk.withExtraArgument({ socket }));
+}).addMiddleware(thunk.withExtraArgument({ socket, playSound }));
 
 window.store = store;
 

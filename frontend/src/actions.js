@@ -19,3 +19,7 @@ export const betSubmit = () => state => (dispatch, getState, { socket }) => {
 export const shoot = () => state => (dispatch, getState, { socket }) => {
   socket.emit('shoot');
 };
+
+export const playSound = which => state => (dispatch, getState, { playSound }) => {
+  playSound(`sounds/${which}.mp3`);
+};
