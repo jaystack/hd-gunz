@@ -187,8 +187,8 @@ h1{
   position: absolute;
   font-size: 28px;
   z-index: 700;
-  top: -19px;
-  left: 19px;
+  top: 0px;
+  left: 30px;
   }
 
 .coin.gold p{  color: rgba(242,215,50,1);}
@@ -196,24 +196,23 @@ h1{
 .coin{
   cursor: pointer;
   content: "";
-  width: 52px; 
-  height: 52px;
+  width: 102px; 
   display: inline-block;
   position: relative;
   margin: 5px;
   top: 6px;
-  border-radius: 50px;
+  border-radius: 70px;
   z-index: 500;
   box-shadow:  2px 2px 2px 1px rgba(0, 0, 0, .1);
   }
 
 .coin:after{
   content: "";
-  width: 42px; 
-  height: 42px;
+  width: 100px; 
+  height: 100px;
   display: block;
-  top: 4px;
-  left: 4px;
+  top: 8px;
+  left: 10px;
   position: absolute;
   border-radius: 50px;
   z-index: 600;
@@ -221,11 +220,11 @@ h1{
 
 .coin:before{
   content: "";
-  width: 50px; 
-  height: 50px;
+  width: 120px; 
+  height: 120px;
   display: block;
   position: absolute;
-  border-radius: 50px;
+  border-radius: 70px;
   z-index: 500;
   }
 
@@ -276,7 +275,7 @@ background: linear-gradient(45deg,  rgba(242,215,12,1) 0%,rgba(255,255,255,1) 56
     }
 
     .buttonContainer{
-      margin-top: 50px;
+      margin-top: 150px;
     }
 
     .shootButton {
@@ -311,13 +310,17 @@ background: linear-gradient(45deg,  rgba(242,215,12,1) 0%,rgba(255,255,255,1) 56
       background-image: url("./assets/blood.gif");
       height: 900px;
     }
-    
+
     .userContainer{
       display: inline-flex;
     }
 
     .userDetials{
-      display: table-row  ;
+      display: table-row;
+    }
+
+    .playersContainer{
+      display: inline-grid;
     }
     
   

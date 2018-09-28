@@ -65,8 +65,8 @@ export default connect(
             )}
           </div>
           <div className="coinContainer">
-            <div className="coin gold"><p>{budget}</p></div>
-            <div onClick={this.attempBet} className="coin silver"><p>{bet}</p></div>
+            <div onClick={this.attempBet} className="coin gold"><p>{budget}</p></div>
+            <div className="coin silver"><p>{bet}</p></div>
           </div>
           {!betSubmitted &&
             <div className="buttonContainer">
