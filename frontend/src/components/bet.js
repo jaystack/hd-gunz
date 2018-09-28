@@ -7,19 +7,23 @@ import char1 from '../assets/char1.png';
 import char2 from '../assets/char2.png';
 import char3 from '../assets/char3.png';
 import char4 from '../assets/char4.png';
+import { bet, betSubmit } from '../actions';
 
 const playersAssets = [char1, char2, char3, char4];
 
-export default connect(state => {
-  const me = state.gameState.players.find(p => p.username === state.me);
-  return {
-    usernames: state.gameState.players.map(p => p.username),
-    bullets: me ? me.bullets : 0,
-    budget: me ? me.budget : 0,
-    bet: me ? me.bet : 0,
-    submitted: me ? me.betSubmitted : false
-  };
-})(
+export default connect(
+  state => {
+    const me = state.gameState.players.find(p => p.username === state.me);
+    return {
+      usernames: state.gameState.players.map(p => p.username),
+      bullets: me ? me.bullets : 0,
+      budget: me ? me.budget : 0,
+      bet: me ? me.bet : 0,
+      submitted: me ? me.betSubmitted : false
+    };
+  },
+  { bet, betSubmit }
+)(
   class bet extends Component {
     takeBet = () => {
       this.props.bet(5);

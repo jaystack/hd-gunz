@@ -5,19 +5,18 @@ import Reg from './components/reg';
 import Ready from './components/ready';
 import Bet from './components/bet';
 import Lightbulb from './components/lightbulb';
-import Dead from './components/dead'
+import Dead from './components/dead';
 
 export default connect(state => ({ status: state.gameState.status, me: state.me }))(
   class App extends Component {
     render() {
       let { status, me } = this.props;
-      status = "dead";
       return (
         <div className="App">
-          {status === 'waiting' && !me ? <Reg /> : status === "waiting" ? <Ready /> : null}
+          {status === 'waiting' && (!me ? <Reg /> : <Ready />)}
           {status === 'bet' && <Bet />}
-          {status === 'lightbulb' && <Lightbulb />}
-          {status === 'dead' && <Dead/>}
+          {status === 'bulb' && <Lightbulb />}
+          {status === 'dead' && <Dead />}
         </div>
       );
     }
