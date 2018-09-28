@@ -3,7 +3,9 @@ import io from 'socket.io-client';
 import { playSound } from './utils';
 import { playSound as playSoundAction } from './actions';
 
-export const socket = io('http://localhost:5000');
+export const socket = io(
+  process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : 'http://guns.hackathon.guidesmiths.com'
+);
 socket.on('connect', () => {
   console.log('connect');
   socket.on('change', gameState => {
