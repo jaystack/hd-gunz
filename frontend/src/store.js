@@ -8,6 +8,7 @@ socket.on('connect', () => {
     console.log('change', gameState);
     store.dispatch(state => ({ ...state, gameState }));
   });
+  socket.emit('register', { username: 'hasyee' });
 });
 
 const store = new Store({
