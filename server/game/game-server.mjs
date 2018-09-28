@@ -1,3 +1,5 @@
+import { stat } from "fs";
+
 export const STATUS_WAITING = 'waiting';
 export const STATUS_BET = 'bet';
 export const STATUS_BULB = 'bulb';
@@ -49,8 +51,41 @@ export default async function initGameServer({ socketIo, store: { dispatch, getS
     socket.on(ACTION_READY, () => {
       dispatch(state => ({ ...state, status: STATUS_BET }));
     });
-    socket.on(ACTION_BET, ({ amount }) => {});
-    socket.on(ACTION_BETSUBMIT, () => {});
+
+    socket.on(ACTION_BET, ({ amount }) => {
+      dispatch(state => {
+        return {
+          ...state,
+          players: state.players.map(player => {
+            return {
+              ...player,
+              budget: player.username === me ? player.budget - amount : player.budget,
+              bet: player.username === me ? player.bet + amount : player.bet,
+              betSubmitted: false
+            }
+          })
+        }
+      });
+    });
+
+    socket.on(ACTION_BETSUBMIT, () => {
+      dispatch(state => {
+        let maxBet = state.players.reduce((max, player) => player.bet > max ? player.bet : max, 0);
+        return {
+          ...state,
+          players: state.players.map(player => {
+            if (player.username !== me) return player;
+
+            return {
+              ...player,
+              alive: player.bet === maxBet,
+              betSubmitted: true
+            }
+          })
+        }
+      })
+    });
+
     socket.on(ACTION_SHOOT, () => {});
   });
 }
