@@ -1,5 +1,6 @@
 import Store, { thunk } from 'repatch';
 
 export default new Store({
- user :{}
-})
+  me: '',
+  gameState: null
+}).addMiddleware(thunk.withExtraArgument({}));
