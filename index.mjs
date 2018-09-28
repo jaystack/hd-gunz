@@ -1,4 +1,4 @@
-import startServer from './src/server.mjs'
+import startServer from './server/server.mjs'
 
 (async function main () {
   try {
