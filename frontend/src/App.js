@@ -23,11 +23,12 @@ export default connect(
 
     render() {
       let { status, me, alive } = this.props;
+      console.log(alive);
       return (
         <div className="App">
           {status === 'waiting' && (!me ? <Reg /> : <Ready />)}
           {status === 'bet' && <Bet />}
-          {status === 'bulb' || (status === 'shoot' && alive && <Lightbulb />)}
+          {status === 'bulb' || (status === 'shoot' && alive) ? <Lightbulb /> : null}
           {status === 'shoot' && !alive && <Dead />}
           <Header />
         </div>

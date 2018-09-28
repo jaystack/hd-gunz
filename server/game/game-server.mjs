@@ -96,7 +96,7 @@ export default async function initGameServer({ socketIo }) {
 
     socket.on(ACTION_BETSUBMIT, () => {
       dispatch(state => {
-        const maxBet = state.players.reduce((max, player) => (player.bet > max ? player.bet : max));
+        const maxBet = state.players.reduce((max, player) => (player.bet > max ? player.bet : max), 0);
         const nextState = {
           ...state,
           players: state.players.map(player => {
