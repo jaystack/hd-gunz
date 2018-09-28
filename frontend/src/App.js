@@ -27,7 +27,7 @@ export default connect(
         <div className="App">
           {status === 'waiting' && (!me ? <Reg /> : <Ready />)}
           {status === 'bet' && <Bet />}
-          {status === 'bulb' && <Lightbulb />}
+          {status === 'bulb' || (status === 'shoot' && alive && <Lightbulb />)}
           {status === 'shoot' && !alive && <Dead />}
           <Header />
         </div>
