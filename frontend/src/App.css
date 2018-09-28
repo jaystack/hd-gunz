@@ -35,7 +35,7 @@
   padding: 8% 0 0;
   margin: auto;
 }
-.form {
+.login-page .form {
   position: relative;
   z-index: 1;
   background: #FFFFFF;
@@ -45,7 +45,7 @@
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.form input {
+.login-page .form input {
   font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
@@ -55,6 +55,9 @@
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
+   position: relative;
+   opacity: 1;
+   top: 0px;
 }
 .form button {
   font-family: "Roboto", sans-serif;
@@ -302,7 +305,7 @@ background: linear-gradient(45deg,  rgba(242,215,12,1) 0%,rgba(255,255,255,1) 56
     .deadContainer{
       margin: auto;
       background-repeat: no-repeat;
-      background-position: center top; 
+      background-position: top center; 
       background-attachment: fixed;
 
       background-image: url("./assets/blood.gif");
