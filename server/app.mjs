@@ -1,5 +1,9 @@
 import initServeTestUi from './test-ui.mjs'
 import cors from 'cors';
+import { static } from 'express'
+import { join, dirname } from 'path'
+
+const { url } = import.meta
 
 export async function initExpressApp ({ server, app }) {
   /* app.use((_, res, next) => {
@@ -10,7 +14,10 @@ export async function initExpressApp ({ server, app }) {
 
   app.use(cors());
 
-  app.get('/', await initServeTestUi())
+  // app.get('/', await initServeTestUi())
+
+  const dir = dirname(new URL(url).pathname)
+  app.use('/', static(join(dir, '../frontend/build')))
 
   // add endpoints
 
