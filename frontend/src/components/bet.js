@@ -47,14 +47,14 @@ class bet extends Component {
                 </div> 
                 {!this.state.betReady && (
                     <div className="buttonContainer">
-                        <a onClick={this.takeBet} href="#" class="myButton">Bet</a>
+                        <a onClick={this.takeBet} href="#" className="myButton">Bet</a>
                     </div>
                 )
                 }
                     {this.state.betReady && (
                     <div className="revolverContainer">
-                        <div class="loader">
-                            <div class="inner">
+                        <div className="loader">
+                            <div className="inner">
                         </div>
                         </div>
                     </div>
