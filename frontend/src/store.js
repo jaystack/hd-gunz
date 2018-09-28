@@ -10,7 +10,11 @@ socket.on('connect', () => {
   console.log('connect');
   socket.on('change', gameState => {
     console.log('change', gameState);
-    store.dispatch(state => ({ ...state, gameState }));
+    store.dispatch(state => ({
+      ...state,
+      gameState,
+      me: !!gameState.players.find(p => p.username === state.me) ? state.me : ''
+    }));
   });
 
   socket.on('shot', ({ username, shot }) => {

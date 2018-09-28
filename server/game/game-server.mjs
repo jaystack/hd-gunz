@@ -79,26 +79,18 @@ export default async function initGameServer({ socketIo }) {
     });
 
     socket.on(ACTION_BET, ({ amount }) => {
-      Axios.post('http://hackathon.guidesmiths.com:4000/api/nav/log', {
-        gameId: 'guns',
-        userName: me,
-        bet: amount,
-        change: amount
-      }).then(resp => {
-        dispatch(state => {
-          return {
-            ...state,
-            players: state.players.map(player => {
-              return {
-                ...player,
-                // budget: player.username === me ? player.budget - amount : player.budget,
-                budget: player.username === me ? resp.coin : player.budget,
-                bet: player.username === me ? player.bet + amount : player.bet,
-                betSubmitted: false
-              };
-            })
-          };
-        });
+      dispatch(state => {
+        return {
+          ...state,
+          players: state.players.map(player => {
+            return {
+              ...player,
+              budget: player.username === me ? player.budget - amount : player.budget,
+              bet: player.username === me ? player.bet + amount : player.bet,
+              betSubmitted: false
+            };
+          })
+        };
       });
     });
 

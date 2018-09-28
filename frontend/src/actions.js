@@ -25,5 +25,4 @@ export const playSound = which => state => (dispatch, getState, { playSound }) =
 
 export const reset = () => state => (dispatch, getState, { socket }) => {
   socket.emit('reset');
-  dispatch(state => ({ ...state, me: '' }));
 };
