@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route , Switch} from 'react-router-dom'
 import reg from "./components/reg"
+import bet from "./components/bet"
 
 
 class App extends Component {
@@ -9,7 +10,10 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <Route exact path='/' component={reg}/>
+          <Switch>
+            <Route exact  path='/' component={reg}/>
+            <Route exact  path="/bet" component={bet}/>
+          </Switch>
         </Router>
       </div>
     );
