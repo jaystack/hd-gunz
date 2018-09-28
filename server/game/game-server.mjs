@@ -21,18 +21,21 @@ const getInitialPlayerstate = username => ({
   betSubmitted: false
 });
 
-export default async function initGameServer({ socketIo, store }) {
+export default async function initGameServer({ socketIo, store: { dispatch, getState } }) {
   socketIo.on('connection', socket => {
+    let me;
+
     //console.log('connected', socket.handshake);
     socket.on('disconnect', () => console.log('disconnected'));
-    socket.emit(CHANGE, store.getState());
+    socket.emit(CHANGE, getState());
 
-    store.subscribe(() => {
-      socket.emit(CHANGE, store.getState());
+    subscribe(() => {
+      socket.emit(CHANGE, getState());
     });
 
-    socket.on('register', ({ username }) => {
-      store.dispatch(state => {
+    socket.on(ACTION_REGISTER, ({ username }) => {
+      me = username;
+      dispatch(state => {
         if (state.status !== STATUS_WAITING || state.players.length >= 4) {
           return state;
         }
@@ -42,5 +45,12 @@ export default async function initGameServer({ socketIo, store }) {
         };
       });
     });
+
+    socket.on(ACTION_READY, () => {
+      dispatch(state => ({ ...state, status: STATUS_BET }));
+    });
+    socket.on(ACTION_BET, ({ amount }) => {});
+    socket.on(ACTION_BETSUBMIT, () => {});
+    socket.on(ACTION_SHOOT, () => {});
   });
 }
