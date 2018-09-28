@@ -9,7 +9,9 @@ export default connect(null, { reset })(
     };
 
     render() {
-      return <header><button onClick={this.handleReset}>RESET</button></header>;
+      return (
+        <header style={{ position: 'fixed', bottom: 0 }}><button onClick={this.handleReset}>RESET</button></header>
+      );
     }
   }
 );

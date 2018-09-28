@@ -28,9 +28,6 @@ export default connect(state => ({ status: state.gameState.status }), { shoot, p
               <div id="sorpresa" />
             </div>
           </div>
-          <div style={{ marginTop: 400 }}>
-            <a onClick={this.switchLightbulb} href="#" className="myButton">Ready</a>
-          </div>
           {!bulb &&
             <div style={{ marginTop: 50 }}>
               <a onClick={this.attempShoot} href="#" className="shootButton">Shoot</a>
