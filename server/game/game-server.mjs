@@ -15,6 +15,8 @@ const ACTION_BETSUBMIT = 'betSubmit';
 const ACTION_SHOOT = 'shoot';
 const CHANGE = 'change';
 
+const getBulbTime = () => 5000 + Math.random() * 5000
+
 const initialState = {
   players: [],
   status: STATUS_WAITING
@@ -123,7 +125,7 @@ export default async function initGameServer({ socketIo }) {
                 ...state,
                 status: STATUS_SHOOT
               }));
-          }, 10000);
+          }, getBulbTime());
         }
         return everybodyIsReady
           ? {
