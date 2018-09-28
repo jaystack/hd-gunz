@@ -1,28 +1,36 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { register } from '../actions';
 
-
-class reg extends Component {
-
+export default connect({ register })(
+  class reg extends Component {
     state = {
-        username: null
-    }
+      username: ''
+    };
 
-    attempReg = (username) => {
-        //@TODO MAKE SOCKET IO CONNECTION
-    }
+    submit = () => {
+      if (this.state.username) this.props.register(this.state.username);
+    };
 
     render() {
-        return (
+      const { username } = this.state;
+      return (
         <div className="login-page">
-            <div className="form">
-              <form className="login-form">
-                <input type="text" placeholder="username" onChange={evt => {this.setState({username: evt.target.value})}}/>
-                <button onClick={this.attempReg(this.state.username)}>login</button>
-              </form>
-            </div>
+          <div className="form">
+            <form className="login-form">
+              <input
+                type="text"
+                placeholder="username"
+                value={username}
+                onChange={evt => {
+                  this.setState({ username: evt.target.value });
+                }}
+              />
+              <button onClick={this.submit}>login</button>
+            </form>
           </div>
-        );
+        </div>
+      );
     }
-}
-
-export default reg;
+  }
+);

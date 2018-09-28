@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
-import { BrowserRouter as Router, Route , Switch} from 'react-router-dom'
-import reg from "./components/reg"
-import bet from "./components/bet"
+import Reg from './components/reg';
+import Bet from './components/bet';
 
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Router>
-          <Switch>
-            <Route exact  path='/' component={reg}/>
-            <Route exact  path="/bet" component={bet}/>
-          </Switch>
-        </Router>
-      </div>
-    );
+export default connect(state => ({ status: state.gameState.status, me: state.me }))(
+  class App extends Component {
+    render() {
+      const { status, me } = this.props;
+      return (
+        <div className="App">
+          {status === 'waiting' && !me ? <Reg /> : null}
+          {status === 'bet' && <Bet />}
+        </div>
+      );
+    }
   }
-}
-
-export default App;
+);
