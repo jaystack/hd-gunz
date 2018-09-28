@@ -1,7 +1,7 @@
 import Store, { thunk } from 'repatch';
 import io from 'socket.io-client';
 
-export const socket = io('ws://localhost:5000/test');
+export const socket = io('http://localhost:5000');
 socket.on('connect', () => {
   console.log('connect');
   socket.on('change', data => {
