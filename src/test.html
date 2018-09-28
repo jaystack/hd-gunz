@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Test Ui</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+  </head>
+  <body>
+    <p>Test 'em</p>
+    <script>
+      addEventListener('DOMContentLoaded', init)
+      function init () {
+        const socket = io({
+          path: '/test'
+        })
+      }
+    </script>
+  </body>
+</html>
