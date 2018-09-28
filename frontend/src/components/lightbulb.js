@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../css/lightbulb.css';
-import { shoot } from '../actions';
+import { shoot, playSound } from '../actions';
 
-export default connect(state => ({ status: state.gameState.status }), { shoot })(
+export default connect(state => ({ status: state.gameState.status }), { shoot, playSound })(
   class lightbulb extends Component {
+    componentDidMount() {
+      this.props.playSound('lets-start');
+    }
+
     attempShoot = () => {
       if (this.props.status !== 'shoot') return;
       this.props.shoot();

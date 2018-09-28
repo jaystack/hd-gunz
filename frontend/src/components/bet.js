@@ -25,6 +25,10 @@ export default connect(
   { placeBet: bet, betSubmit, playSound }
 )(
   class bet extends Component {
+    componentDidMount() {
+      this.props.playSound('placeyourbets');
+    }
+
     takeBet = () => {
       this.props.playSound('coins');
       this.props.placeBet(5);

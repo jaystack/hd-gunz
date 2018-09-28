@@ -40,6 +40,7 @@ export default async function initGameServer({ socketIo }) {
     socket.emit(CHANGE, getState());
 
     subscribe(() => {
+      console.log(getState());
       socket.emit(CHANGE, getState());
     });
 
@@ -48,6 +49,7 @@ export default async function initGameServer({ socketIo }) {
     });
 
     socket.on(ACTION_REGISTER, ({ username }) => {
+      console.log(username);
       me = username;
       dispatch(state => {
         if (state.status !== STATUS_WAITING || state.players.length >= 4) {

@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
-import "../css/blink.css"
+import { connect } from 'react-redux';
+import '../css/blink.css';
+import { playSound } from '../actions';
 
-class dead extends Component {
-    render() {
-        return (
-            <div className="deadContainer">
-                <div class="blink"><span>You are dead</span></div>
-            </div>
-        );
+export default connect(null, { playSound })(
+  class dead extends Component {
+    componentDidMount() {
+      this.props.playSound('killed3');
     }
-}
 
-export default dead;
+    render() {
+      return (
+        <div className="deadContainer">
+          <div class="blink"><span>You are dead</span></div>
+        </div>
+      );
+    }
+  }
+);
