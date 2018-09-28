@@ -15,7 +15,7 @@ const ACTION_BETSUBMIT = 'betSubmit';
 const ACTION_SHOOT = 'shoot';
 const CHANGE = 'change';
 
-const getBulbTime = () => 5000 + Math.random() * 5000
+const getBulbTime = () => 5000 + Math.random() * 5000;
 
 const initialState = {
   players: [],
@@ -58,8 +58,8 @@ export default async function initGameServer({ socketIo }) {
         name: username
       }).then(user => {
         if (user.coin <= 0) {
-          return
-        } 
+          return;
+        }
         dispatch(state => {
           if (state.status !== STATUS_WAITING || state.players.length >= 4) {
             return state;
@@ -71,7 +71,7 @@ export default async function initGameServer({ socketIo }) {
             status: state.players.length === 3 ? STATUS_BET : state.status
           };
         });
-      })
+      });
     });
 
     socket.on(ACTION_READY, () => {
@@ -80,7 +80,7 @@ export default async function initGameServer({ socketIo }) {
 
     socket.on(ACTION_BET, ({ amount }) => {
       Axios.post('http://hackathon.guidesmiths.com:4000/api/nav/log', {
-        gameId: "guns",
+        gameId: 'guns',
         userName: me,
         bet: amount,
         change: amount
@@ -99,7 +99,7 @@ export default async function initGameServer({ socketIo }) {
             })
           };
         });
-      })
+      });
     });
 
     socket.on(ACTION_BETSUBMIT, () => {
@@ -145,23 +145,36 @@ export default async function initGameServer({ socketIo }) {
       const nextPlayerIndex = playerIndex === state.players.length - 1 ? 0 : playerIndex + 1;
       if (player.alive) socket.emit(`shot`, { username: player.username, shot });
 
+      const isFinish = state.players.every(p => !p.alive || p.didShoot);
+      const winnerIndex = state.players.findIndex(p => p.alive);
+      const sum = state.players.reduce((sum, player) => sum + player.bet, 0);
+
       dispatch(state => ({
         ...state,
-        players: state.players.map((player, index) => {
-          if (index === playerIndex)
+        players: state.players
+          .map((player, index) => {
+            if (index === playerIndex)
+              return {
+                ...player,
+                bullets: shot ? player.bullets - 1 : player.bullets,
+                didShoot: true
+              };
+            if (index === nextPlayerIndex && shot) {
+              return {
+                ...player,
+                alive: false
+              };
+            }
+            return player;
+          })
+          .map((player, index) => {
+            if (!isFinish) return player;
             return {
               ...player,
-              bullets: shot ? player.bullets - 1 : player.bullets,
-              didShoot: true
+              budget: index === winnerIndex ? player.budget + sum : player.budget,
+              bet: 0
             };
-          if (index === nextPlayerIndex && shot) {
-            return {
-              ...player,
-              alive: false
-            };
-          }
-          return player;
-        })
+          })
       }));
     });
   });
