@@ -5,6 +5,13 @@
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
+  height: "100%";
+}
+
+#root{
+  background-image: url("./assets/vintage_frame.png");
+  height: 100vh;
+  background-size: 100vw  100vh;
 }
 
 .App-header {
@@ -195,10 +202,11 @@ h1 {
   z-index: 700;
   top: 0px;
   left: 30px;
+  color: black;
 }
 
 .coin.gold p {
-  color: rgba(242, 215, 50, 1);
+  color: black;
 }
 
 .coin {
