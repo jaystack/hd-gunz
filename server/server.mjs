@@ -8,7 +8,7 @@ const startServer = (server, port, address) => new Promise((resolve, reject) =>
 )
 
 export default async function start ({
-  port = 4242,
+  port = 5000,
   address = '0.0.0.0'
 } = {}) {
   const app = express()
