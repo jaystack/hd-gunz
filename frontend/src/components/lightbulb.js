@@ -5,8 +5,13 @@ import { shoot, playSound } from '../actions';
 
 export default connect(state => ({ status: state.gameState.status }), { shoot, playSound })(
   class lightbulb extends Component {
+    state = {
+      displayRevolver: true
+    };
+
     componentDidMount() {
       this.props.playSound('revolver-spinning');
+      setTimeout(() => this.setState({ displayRevolver: false }), 3000);
     }
 
     attempShoot = () => {
@@ -16,6 +21,7 @@ export default connect(state => ({ status: state.gameState.status }), { shoot, p
 
     render() {
       const { status } = this.props;
+      const { displayRevolver } = this.state;
       const bulb = status === 'bulb';
       return (
         <div>
@@ -28,16 +34,19 @@ export default connect(state => ({ status: state.gameState.status }), { shoot, p
               <div id="sorpresa" />
             </div>
           </div>
-          {!bulb &&
-            <div style={{ marginTop: 50 }}>
-              <a onClick={this.attempShoot} href="#" className="shootButton">Shoot</a>
-            </div>}
-          {bulb &&
-            <div className="revolverContainer">
+
+          <div className="revolverContainer">
+            {!displayRevolver &&
+              bulb &&
+              <div>
+                <a onClick={this.attempShoot} href="#" className="shootButton">Shoot</a>
+              </div>}
+            {displayRevolver &&
+              bulb &&
               <div className="loader">
                 <div className="inner" />
-              </div>
-            </div>}
+              </div>}
+          </div>
         </div>
       );
     }
