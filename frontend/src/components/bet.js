@@ -65,12 +65,12 @@ export default connect(
             )}
           </div>
           <div className="coinContainer" onClick={this.takeBet}>
-            <div onClick={this.attempBet} className="coin gold"><p>{budget}</p></div>
+            <div className="coin gold"><p>{budget}</p></div>
             <div className="coin silver"><p>{bet}</p></div>
           </div>
           {!betSubmitted &&
             <div className="buttonContainer">
-              <a href="#" className="myButton">Start</a>
+              <a href="#" className="myButton" onClick={this.attempBet}>Start</a>
             </div>}
           {me.betSubmitted &&
             <div className="revolverContainer">
