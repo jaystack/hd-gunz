@@ -21,7 +21,7 @@ const getInitialPlayerstate = username => ({
   betSubmitted: false
 });
 
-export default async function initGameServer({ socketIo, store: { dispatch, getState } }) {
+export default async function initGameServer({ socketIo, store: { dispatch, getState, subscribe } }) {
   socketIo.on('connection', socket => {
     let me;
 
