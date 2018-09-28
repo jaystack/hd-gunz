@@ -15,11 +15,12 @@ export default connect(
   state => {
     const me = state.gameState.players.find(p => p.username === state.me);
     return {
-      usernames: state.gameState.players.map(p => p.username),
+      usernames: state.gameState.players,
       bullets: me ? me.bullets : 0,
       budget: me ? me.budget : 0,
       bet: me ? me.bet : 0,
-      submitted: me ? me.betSubmitted : false
+      submitted: me ? me.betSubmitted : false,
+      me: me
     };
   },
   { placeBet: bet, betSubmit, playSound }
@@ -43,15 +44,23 @@ export default connect(
     };
 
     render() {
-      const { usernames, bullets, budget, bet, betSubmitted } = this.props;
+      const { usernames, bullets, budget, bet, betSubmitted , me} = this.props;
+      console.log(this.props)
       return (
         <div>
           <div className="bulletContainer">
-            {Array.from({ length: bullets.length }).map((e, i) => <img src={bullet} key={i} className="bullet" />)}
+            {Array.from({ length: bullets }).map((e, i) => <img src={bullet} key={i} className="bullet" />)}
           </div>
           <div className="playersContainer">
-            {Array.from({ length: usernames.length }).map((e, i) => (
-              <img src={playersAssets[i]} key={i} className="chars" />
+            {usernames.map((e, i) => (
+              e.username !== me.username ? 
+              (<div key={i} className="userContainer">
+                <img src={playersAssets[i]}  className="chars" />
+                <div className="userDetials">
+                  <p> {e.username}</p>
+                  <p>Bet : {e.bet}</p>
+                </div>
+              </div>) : null
             ))}
           </div>
           <div className="coinContainer">
@@ -60,7 +69,7 @@ export default connect(
           </div>
           {!betSubmitted &&
             <div className="buttonContainer">
-              <a onClick={this.takeBet} href="#" className="myButton">Bet</a>
+              <a onClick={this.takeBet} href="#" className="myButton">Start</a>
             </div>}
           {betSubmitted &&
             <div className="revolverContainer">

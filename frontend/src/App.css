@@ -312,4 +312,12 @@ background: linear-gradient(45deg,  rgba(242,215,12,1) 0%,rgba(255,255,255,1) 56
       height: 900px;
     }
     
+    .userContainer{
+      display: inline-flex;
+    }
+
+    .userDetials{
+      display: table-row  ;
+    }
+    
   

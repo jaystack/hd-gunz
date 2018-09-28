@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import { playSound } from './utils';
 import { playSound as playSoundAction } from './actions';
 
-export const socket = io('http://192.168.3.92:5000');
+export const socket = io('http://localhost:5000');
 socket.on('connect', () => {
   console.log('connect');
   socket.on('change', gameState => {
