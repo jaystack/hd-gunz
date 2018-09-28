@@ -1,11 +1,18 @@
 import Store, { thunk } from 'repatch';
-import socketIOClient from 'socket.io-client'
-import { SOCKET_IO } from "./constans"
+import io from 'socket.io-client';
 
-export const socket = socketIOClient(SOCKET_IO);
+export const socket = io('ws://localhost:5000/test');
+socket.on('connect', () => {
+  console.log('connect');
+  socket.on('change', data => {
+    console.log('change', data);
+    store.dispatch(state => ({ ...state, gameState: data }));
+  });
+});
 
-
-export default new Store({
+const store = new Store({
   me: '',
   gameState: null
-}).addMiddleware(thunk.withExtraArgument({socket}));
+}).addMiddleware(thunk.withExtraArgument({ socket }));
+
+export default store;
