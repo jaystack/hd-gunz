@@ -11,7 +11,7 @@ export default connect(state => ({ status: state.gameState.status, me: state.me 
       const { status, me } = this.props;
       return (
         <div className="App">
-          {status === 'waiting' && !me ? <Reg /> : <Ready />}
+          {status === 'waiting' && !me ? <Reg /> : status === "waiting" ? <Ready /> : null}
           {status === 'bet' && <Bet />}
         </div>
       );
