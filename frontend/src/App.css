@@ -340,3 +340,9 @@ h1 {
 .coinContainer {
   height: 150px;
 }
+
+.shootContainer{
+  margin: auto;
+    position: relative;
+    top: 400px;
+}

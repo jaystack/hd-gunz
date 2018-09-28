@@ -34,19 +34,21 @@ export default connect(state => ({ status: state.gameState.status }), { shoot, p
               <div id="sorpresa" />
             </div>
           </div>
-
-          <div className="revolverContainer">
-            {!displayRevolver &&
-              bulb &&
+      {!displayRevolver &&
+        !bulb &&
+          <div className="shootContainer">
+            
               <div>
                 <a onClick={this.attempShoot} href="#" className="shootButton">Shoot</a>
+              </div>
               </div>}
             {displayRevolver &&
               bulb &&
+              <div className="revolverContainer">
               <div className="loader">
                 <div className="inner" />
+              </div>
               </div>}
-          </div>
         </div>
       );
     }
