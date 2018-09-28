@@ -8,6 +8,6 @@ RUN npm install --only=production
 
 COPY . .
 
-EXPOSE 4242
+EXPOSE 5000
 
 CMD npm start
