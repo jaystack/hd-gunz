@@ -73,13 +73,6 @@ export default connect(
             <div className="buttonContainer">
               <a href="#" className="myButton" onClick={this.attempBet}>Start</a>
             </div>}
-          {me &&
-            me.betSubmitted &&
-            <div className="revolverContainer">
-              <div className="loader">
-                <div className="inner" />
-              </div>
-            </div>}
         </div>
       );
     }
