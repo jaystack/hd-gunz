@@ -1,6 +1,5 @@
 import Store, { thunk } from 'repatch';
 import io from 'socket.io-client';
-import { playSound } from './utils';
 import { playSound } from './actions';
 
 export const socket = io('http://192.168.3.92:5000');
