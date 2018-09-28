@@ -23,6 +23,7 @@ export default connect(state => ({ status: state.gameState.status }), { shoot, p
       const { status } = this.props;
       const { displayRevolver } = this.state;
       const bulb = status === 'bulb';
+      const shoot = status === 'shoot';
       return (
         <div>
           <div id="lampadario">
@@ -34,21 +35,20 @@ export default connect(state => ({ status: state.gameState.status }), { shoot, p
               <div id="sorpresa" />
             </div>
           </div>
-      {!displayRevolver &&
-        !bulb &&
-          <div className="shootContainer">
-            
+          {!displayRevolver &&
+            <div className="shootContainer">
+
               <div>
                 <a onClick={this.attempShoot} href="#" className="shootButton">Shoot</a>
               </div>
-              </div>}
-            {displayRevolver &&
-              bulb &&
-              <div className="revolverContainer">
+            </div>}
+          {displayRevolver &&
+            bulb &&
+            <div className="revolverContainer">
               <div className="loader">
                 <div className="inner" />
               </div>
-              </div>}
+            </div>}
         </div>
       );
     }
