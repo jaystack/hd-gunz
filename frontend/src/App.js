@@ -7,16 +7,19 @@ import Bet from './components/bet';
 import Lightbulb from './components/lightbulb';
 import Dead from './components/dead';
 
-export default connect(state => ({ status: state.gameState.status, me: state.me }))(
+export default connect(state => {
+  const player = state.gameState.players.find(p => p.username === state.me);
+  return { status: state.gameState.status, me: state.me, alive: player ? player.alive : true };
+})(
   class App extends Component {
     render() {
-      let { status, me } = this.props;
+      let { status, me, alive } = this.props;
       return (
         <div className="App">
           {status === 'waiting' && (!me ? <Reg /> : <Ready />)}
           {status === 'bet' && <Bet />}
           {status === 'bulb' && <Lightbulb />}
-          {status === 'dead' && <Dead />}
+          {status === 'shoot' && !alive && <Dead />}
         </div>
       );
     }
