@@ -72,7 +72,7 @@ export default connect(
             <div className="buttonContainer">
               <a href="#" className="myButton">Start</a>
             </div>}
-          {betSubmitted &&
+          {me.betSubmitted &&
             <div className="revolverContainer">
               <div className="loader">
                 <div className="inner" />
